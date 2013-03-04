@@ -9,7 +9,9 @@
  */
 
 ({
-    // App 顶级目录，非必选项。如果指定值，baseUrl 则会以此为相对路径
+    // App 顶级目录，非必选项
+		// 如果该选项值未指定，将以 baseUrl 路径查找资源
+		// 如果该选项值已指定，baseUrl 则会以该值为相对路径查找资源
 
     //The top level directory that contains your app. If this option is used
     //then it assumed your scripts are in a subdirectory under this path.
@@ -20,9 +22,10 @@
     //this directory.
     appDir: "some/path/",
 
-    // 模块根目录。默认情况下所有模块资源都相对此目录。
-    // 若该值未指定，模块则相对 build 文件所在目录。
-    // 若 appDir 值已指定，模块根目录 baseUrl 则相对 appDir。
+    // 模块根目录
+		// 默认情况下所有模块资源都相对此目录
+    // 若该值未指定，模块则相对 build 文件所在目录
+    // 若 appDir 值已指定，模块根目录 baseUrl 则相对 appDir
     //By default, all modules are located relative to this path. If baseUrl
     //is not explicitly set, then all modules are loaded relative to
     //the directory that holds the build file. If appDir is set, then
@@ -54,17 +57,20 @@
         "baz": "../another/path/baz"
     },
 
-    // 配置 CommonJS 的 package See http://requirejs.org/docs/api.html#packages for more information.
+    // 配置 CommonJS 的 package
+		// 详见 http://requirejs.org/docs/api.html#packages
     //Configure CommonJS packages. See http://requirejs.org/docs/api.html#packages
     //for more information.
     packages: [],
 
-    // 指定输出目录，若值未指定，则相对 build 文件所在目录
+    // 指定输出目录
+		// 若值未指定，则相对 build 文件所在目录
     //The directory path to save the output. If not specified, then
     //the path will default to be a directory called "build" as a sibling
     //to the build file. All relative paths are relative to the build file.
     dir: "../some/path",
 
+		// 解决使用非 AMD 方式定义的模块（如 jQuery 插件）及其载入顺序
     //If shim config is used in the app during runtime, duplicate the config
     //here. Necessary if shim config is used, so that the shim's dependencies
     //are included in the build. Using "mainConfigFile" is a better way to
@@ -92,6 +98,7 @@
 
     // JS 文件优化方式，目前支持以下几种：
     //   uglify: （默认） 使用 UglifyJS 来压缩代码
+		//   uglify2: 2.1.2+ 以后的版本使用 UglifyJS2 来压缩代码
     //   closure: 使用 Google's Closure Compiler 的简单优化模式
     //   closure.keepLines: 使用 closure，但保持换行
     //   none: 不压缩代码
@@ -108,7 +115,7 @@
     //- "none": no minification will be done.
     optimize: "uglify",
 
-    //Introduced in 2.1.2: If using "dir" for an output directory, normally the
+    // 2.1.2 版本引入: If using "dir" for an output directory, normally the
     //optimize setting is used to optimize the build layers (the "modules"
     //section of the config) and any other JS file in the directory. However, if
     //the non-build layer JS files will not be loaded after a build, you can
@@ -117,7 +124,7 @@
     //files.
     skipDirOptimize: false,
 
-    //Introduced in 2.1.2 and considered experimental.
+    // 2.1.2 版本引入[试用阶段]
     //If the minifier specified in the "optimize" option supports generating
     //source maps for the minfied code, then generate them. The source maps
     //generated only translate minified JS to non-minified JS, it does not do
@@ -129,7 +136,7 @@
     //source maps as ".js.src" files.
     generateSourceMaps: false,
 
-    //Introduced in 2.1.1: If a full directory optimization ("dir" is used), and
+    // 2.1.1 版本引入: If a full directory optimization ("dir" is used), and
     //optimize is not "none", and skipDirOptimize is false, then normally all JS
     //files in the directory will be minified, and this value is automatically
     //set to "all". For JS files to properly work after a minification, the
@@ -151,7 +158,7 @@
     normalizeDirDefines: "skip",
 
     // 使用 UglifyJS 时的可配置参数
-    // See https://github.com/mishoo/UglifyJS for the possible values.
+    // 详见 https://github.com/mishoo/UglifyJS
     //If using UglifyJS for script optimization, these config options can be
     //used to pass configuration values to UglifyJS.
     //See https://github.com/mishoo/UglifyJS for the possible values.
@@ -173,11 +180,10 @@
         no_mangle: true
     },
 
-    //If using UglifyJS for script optimization, these config options can be
-    //used to pass configuration values to UglifyJS.
-    //For possible values see:
-    //http://lisperator.net/uglifyjs/codegen
-    //http://lisperator.net/uglifyjs/compress
+    // 若使用 UglifyJS 作为优化方式，以下参数可作为配置
+    // 参数配置详见：
+		// http://lisperator.net/uglifyjs/codegen
+    // http://lisperator.net/uglifyjs/compress
     uglify2: {
         //Example of a specialized config. If you are fine
         //with the default options, no need to specify
