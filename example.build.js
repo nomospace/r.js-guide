@@ -12,7 +12,6 @@
     // App 顶级目录，非必选项
 		// 如果该选项值未指定，将以 baseUrl 路径查找资源
 		// 如果该选项值已指定，baseUrl 则会以该值为相对路径查找资源
-
     //The top level directory that contains your app. If this option is used
     //then it assumed your scripts are in a subdirectory under this path.
     //This option is not required. If it is not specified, then baseUrl
@@ -59,8 +58,6 @@
 
     // 配置 CommonJS 的 package
 		// 详见 http://requirejs.org/docs/api.html#packages
-    //Configure CommonJS packages. See http://requirejs.org/docs/api.html#packages
-    //for more information.
     packages: [],
 
     // 指定输出目录
@@ -359,10 +356,9 @@
     //removed from the output folder.
     removeCombined: false,
 
-    //List the modules that will be optimized. All their immediate and deep
-    //dependencies will be included in the module's file when the build is
-    //done. If that module or any of its dependencies includes i18n bundles,
-    //only the root bundles will be included unless the locale: section is set above.
+    // 待优化的模块列表
+		// 模块所有依赖资源会在 build 完成之后被引入模块
+		// 当该模块或者任何该模块依赖资源包含国际化资源文件时，除非设置了 locale，否则只有根资源文件会被引入
     modules: [
         //Just specifying a module name means that module will be converted into
         //a built file that contains all of its dependencies. If that module or any
@@ -567,7 +563,7 @@
         return contents.replace(/bar/g, 'foo');
     },
 
-    //Introduced in 2.1.3: Seed raw text contents for the listed module IDs.
+    // 2.1.3 中引入: Seed raw text contents for the listed module IDs.
     //These text contents will be used instead of doing a file IO call for
     //those modules. Useful is some module ID contents are dynamically
     //based on user input, which is common in web build tools.
@@ -575,7 +571,7 @@
         'some/id': 'define(["another/id"], function () {});'
     },
 
-    // 若为true，优化器会强制在文件中包裹一层 define(require, exports, module) {})
+    // 若为 true，优化器会强制在文件中包裹一层 define(require, exports, module) {})
     //Introduced in 2.0.2: if set to true, then the optimizer will add a
     //define(require, exports, module) {}); wrapper around any file that seems
     //to use commonjs/node module syntax (require, exports) without already
@@ -588,7 +584,7 @@
     //path lookups.
     cjsTranslate: true,
 
-    //Introduced in 2.0.2: a bit experimental.
+    // 2.0.2 中引入[试用阶段]
     //Each script in the build layer will be turned into
     //a JavaScript string with a //@ sourceURL comment, and then wrapped in an
     //eval call. This allows some browsers to see each evaled script as a
@@ -601,10 +597,9 @@
     //easier built layer debugging, which goes against minification desires.
     useSourceUrl: true,
 
-    //Defines the loading time for modules. Depending on the complexity of the
-    //dependencies and the size of the involved libraries, increasing the wait
-    //interval may be required. Default is 7 seconds. Setting the value to 0
-    //disables the waiting interval.
+    // 定义模块的加载时间
+		// 鉴于依赖关系的复杂度以及大小各异的资源文件，适当增大等待间隔 (waiting interval) 显得很有必要
+		// 默认是7秒，值为0时禁用等待间隔
     waitSeconds: 7
 
 })
