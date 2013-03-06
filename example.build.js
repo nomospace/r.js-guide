@@ -156,9 +156,6 @@
 
     // 使用 UglifyJS 时的可配置参数
     // 详见 https://github.com/mishoo/UglifyJS
-    //If using UglifyJS for script optimization, these config options can be
-    //used to pass configuration values to UglifyJS.
-    //See https://github.com/mishoo/UglifyJS for the possible values.
     uglify: {
         toplevel: true,
         ascii_only: true,
@@ -179,12 +176,10 @@
 
     // 若使用 UglifyJS 作为优化方式，以下参数可作为配置
     // 参数配置详见：
-		// http://lisperator.net/uglifyjs/codegen
-    // http://lisperator.net/uglifyjs/compress
+		// 	http://lisperator.net/uglifyjs/codegen
+    // 	http://lisperator.net/uglifyjs/compress
     uglify2: {
-        //Example of a specialized config. If you are fine
-        //with the default options, no need to specify
-        //any of these properties.
+        // 配置示例
         output: {
             beautify: true
         },
@@ -308,8 +303,7 @@
     //complete example.
     namespace: 'foo',
 
-    // 跳过 pragmas 处理
-    //Skip processing for pragmas.
+    // 跳过 pragmas 的处理
     skipPragmas: false,
 
     //If skipModuleInsertion is false, then files that do not use define()
@@ -344,7 +338,8 @@
     //will be placed on another domain.
     optimizeAllPluginResources: false,
 
-    // 处理级联依赖，默认为 false，此时能够在运行时动态 require 级联的模块。为 true 时，级联模块会被一同打包
+    // 处理级联依赖，默认为 false
+		// 之所以为 false，是由于那些依赖的资源应该在运行时动态才调用
     //Finds require() dependencies inside a require() or define call. By default
     //this value is false, because those resources should be considered dynamic/runtime
     //calls. However, for some optimization scenarios,
@@ -352,8 +347,7 @@
     //by default.
     findNestedDependencies: false,
 
-    //If set to true, any files that were combined into a build layer will be
-    //removed from the output folder.
+    // 如果设置为 true 所有被合并至 output 目录下的文件会被清除
     removeCombined: false,
 
     // 待优化的模块列表
@@ -448,10 +442,8 @@
     insertRequire: ['foo/bar/bop'],
     out: "path/to/optimized-file.js",
 
-    //An alternative to "include". Normally only used in a requirejs.config()
-    //call for a module used for mainConfigFile, since requirejs will read
-    //"deps" during runtime to do the equivalent of require(deps) to kick
-    //off some module loading.
+    // 函数初始化入口的替代方式
+		// 一般在主配置文件中，通过 requirejs.config() 的方式调用，requirejs 会自动读取 "deps" 下的依赖资源
     deps: ["foo/bar/bee"],
 
     // RequireJS 2.0 中，out 可以是一个函数
