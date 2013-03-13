@@ -536,17 +536,14 @@
         optimize: true
     },
 
-    // 在每个文件模块被读取时的操作函数，可在函数体内作适当变换
-    //A function that if defined will be called for every file read in the
-    //build that is done to trace JS dependencies. This allows transforms of
-    //the content.
-    onBuildRead: function(moduleName, path, contents) {
+		// 在 build 时，如果定义了该函数，会在每个文件模块读取时调用
+		onBuildRead: function(moduleName, path, contents) {
         //Always return a value.
         //This is just a contrived example.
         return contents.replace(/foo/g, 'bar');
     },
 
-    // 在每个文件模块被写入时的操作函数
+    // 类似 onBuildRead，会在每个文件模块写入时调用
     //A function that will be called for every write to an optimized bundle
     //of modules. This allows transforms of the content before serialization.
     onBuildWrite: function(moduleName, path, contents) {
